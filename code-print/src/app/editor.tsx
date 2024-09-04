@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react';
-import { Kbd } from '@chakra-ui/react'
+import { Kbd, IconButton } from '@chakra-ui/react'
+import { SettingsIcon } from '@chakra-ui/icons'
 import { Button } from '@chakra-ui/react';
 const button_size = 10
 export default function Editor() {
@@ -15,7 +16,7 @@ export default function Editor() {
       {/* Navigation Bar */}
       <div className='h-5 flex flex-row pt-1 pr-2 pl-2 pb-1'>
         {/* buttons */}
-        <div className='h-full flex flex-row space-x-1 align-middle justify-center items-center'>
+        <div className='h-full pr-5 flex flex-row space-x-1 align-middle justify-center items-center'>
 
           <div className='bg-[#FF5F56] size-[6px] rounded-full'></div>
           <div className='bg-[#FFBD2E] size-[6px] rounded-full'></div>
@@ -24,16 +25,27 @@ export default function Editor() {
 
 
         {/* side */}
-        <div className='flex-1 flex justify-center h-full'>
+        <div className='flex flex-row flex-1 justify-center h-full'>
           {/* search */}
-          <div className='w-1/2 bg-[#424242] rounded-sm text-center text-[#999999]'>
-            <p style={{ fontSize: 5 }}>
-              Computer Science
-            </p>
+          <div className='w-3/4 flex flex-1 justify-center items-center'>
+
+            <div className='w-1/2 bg-[#424242] rounded-sm text-center text-[#999999]'>
+              <p style={{ fontSize: 5 }}>
+                Computer Science
+              </p>
+            </div>
           </div>
-          {/* <span>
-            <Kbd sx={{ bg: 'blue.500', fontSize:'5px',color: 'white', borderRadius: 'sm',px:1}}>shift</Kbd> + <Kbd>H</Kbd>
-          </span> */}
+          {/* options */}
+          <div className='space-1 flex flex-row items-center justify-end'>
+
+            <IconButton
+              colorScheme='white'
+              aria-label='Done'
+              fontSize='7px'
+              icon={<SettingsIcon />}
+              size='10px'
+            />
+          </div>
 
 
         </div>
@@ -49,6 +61,6 @@ export default function Editor() {
         <textarea className='w-full bg-transparent outline-none text-white ' aria-multiline name='space' style={{ fontSize: font.size }} />
 
       </div>
-    </div>
+    </div >
   );
 }
