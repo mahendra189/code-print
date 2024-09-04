@@ -6,10 +6,10 @@ import { Button } from '@chakra-ui/react';
 const button_size = 10
 export default function Editor() {
   const [font, setFont] = useState({
-    size: 18
+    size: 12
   })
   return (
-    <div className="min-w-20 min-h-20 w-96 h-56 bg-[#202025] rounded-md relative shadow-md shadow-slate-400">
+    <div className="min-w-20 min-h-20 w-96 h-56 bg-[#202025] rounded-md relative shadow-md shadow-slate-400 flex-col flex overflow-hidden">
       {/* Double Border */}
       <div className="absolute inset-0 border-[0.5px] border-black rounded-md pointer-events-none"></div>
       <div className="absolute inset-[0.3px] border-[1px] border-gray-600 rounded-md pointer-events-none"></div>
@@ -52,15 +52,21 @@ export default function Editor() {
       </div>
 
 
-      <div className='w-full bg-[#414141]' style={{ height: '0.5px' }}>
-
-      </div>
+      <div className='w-full bg-[#414141]' style={{ height: '0.5px' }} />
       {/* Editor */}
       {/* to write a code */}
-      <div className='h-5/6 p-2'>
-        <textarea className='w-full bg-transparent outline-none text-white ' aria-multiline name='space' style={{ fontSize: font.size }} />
+      <div className='flex-1 flex-col bg-[#2f2f35] pr-1 pl-1'>
+        <textarea className='w-full h-full bg-transparent outline-none text-white overflow-auto' aria-multiline name='space' style={{ fontSize: font.size }} wrap='off' />
 
       </div>
+      <div className='w-full bg-[#414141]' style={{ height: '0.5px' }} />
+      <div className='flex flex-row justify-end pr-2 pl-2'>
+        <p className='text-[#999999]' style={{fontSize:'7px'}}>Lines: </p>
+        {/* TODO: code lines */}
+        <p className='text-[#999999]' style={{fontSize:'7px'}}>0 </p>
+
+      </div>
+
     </div >
   );
 }
