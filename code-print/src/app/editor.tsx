@@ -1,12 +1,14 @@
-import * as React from 'react';
-import Tabs from '@mui/joy/Tabs';
-import TabList from '@mui/joy/TabList';
-import Tab from '@mui/joy/Tab';
-import TabPanel from '@mui/joy/TabPanel';
-
+"use client"
+import { useState } from 'react';
+import { Kbd } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react';
+const button_size = 10
 export default function Editor() {
+  const [font, setFont] = useState({
+    size: 18
+  })
   return (
-    <div className={"min-w-20 min-h-20 w-96 h-56 bg-[#202025] rounded-md relative"}>
+    <div className="min-w-20 min-h-20 w-96 h-56 bg-[#202025] rounded-md relative shadow-md shadow-slate-400">
       {/* Double Border */}
       <div className="absolute inset-0 border-[0.5px] border-black rounded-md pointer-events-none"></div>
       <div className="absolute inset-[0.3px] border-[1px] border-gray-600 rounded-md pointer-events-none"></div>
@@ -15,9 +17,9 @@ export default function Editor() {
         {/* buttons */}
         <div className='h-full flex flex-row space-x-1 align-middle justify-center items-center'>
 
-          <div className='bg-[#FF5F56] w-2 h-2 rounded-full'></div>
-          <div className='bg-[#FFBD2E] w-2 h-2 rounded-full'></div>
-          <div className='bg-[#27C93F] w-2 h-2 rounded-full'></div>
+          <div className='bg-[#FF5F56] size-[6px] rounded-full'></div>
+          <div className='bg-[#FFBD2E] size-[6px] rounded-full'></div>
+          <div className='bg-[#27C93F] size-[6px] rounded-full'></div>
         </div>
 
 
@@ -29,6 +31,10 @@ export default function Editor() {
               Computer Science
             </p>
           </div>
+          {/* <span>
+            <Kbd sx={{ bg: 'blue.500', fontSize:'5px',color: 'white', borderRadius: 'sm',px:1}}>shift</Kbd> + <Kbd>H</Kbd>
+          </span> */}
+
 
         </div>
       </div>
@@ -40,7 +46,7 @@ export default function Editor() {
       {/* Editor */}
       {/* to write a code */}
       <div className='h-5/6 p-2'>
-        <input className='bg-transparent outline-none text-white ' type='text' aria-multiline name='space' />
+        <textarea className='w-full bg-transparent outline-none text-white ' aria-multiline name='space' style={{ fontSize: font.size }} />
 
       </div>
     </div>
