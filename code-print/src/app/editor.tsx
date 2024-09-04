@@ -16,7 +16,7 @@ export default function Editor() {
       {/* Navigation Bar */}
       <div className='h-5 flex flex-row pt-1 pr-2 pl-2 pb-1'>
         {/* buttons */}
-        <div className='h-full pr-5 flex flex-row space-x-1 align-middle justify-center items-center'>
+        <div className='h-full flex flex-row space-x-1 align-middle justify-center items-center'>
 
           <div className='bg-[#FF5F56] size-[6px] rounded-full'></div>
           <div className='bg-[#FFBD2E] size-[6px] rounded-full'></div>
