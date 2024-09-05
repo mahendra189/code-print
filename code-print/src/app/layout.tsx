@@ -15,11 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ChakraProvider>
 
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </ChakraProvider>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
   );
 }
