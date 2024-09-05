@@ -2,17 +2,22 @@
 import { useEffect, useState } from 'react';
 import { Kbd, IconButton } from '@chakra-ui/react'
 import { SettingsIcon } from '@chakra-ui/icons'
+import Settings from './screens/Settings';
 
 export default function Editor() {
   const [font, setFont] = useState({
     size: 12
   })
-  const [content, setContent] = useState('hi\nhi\n')
+  const [content, setContent] = useState('hi! programming here!')
   const [lineNumbers, setLineNumbers] = useState(0)
+  const [isEditor, setIsEditor] = useState(false)
 
   const updateContent = () => {
     let n = content.split('\n').length
     setLineNumbers(n)
+  }
+  const handleSettings = () => {
+    setIsEditor(!isEditor)
   }
   useEffect(() => {
     updateContent()
@@ -55,6 +60,8 @@ export default function Editor() {
               fontSize='7px'
               icon={<SettingsIcon />}
               size='10px'
+              color={'white'}
+              onClick={() => handleSettings()}
             />
           </div>
 
@@ -66,34 +73,32 @@ export default function Editor() {
       <div className='w-full bg-[rgb(65,65,65)]' style={{ height: '0.5px' }} />
       {/* Editor */}
       {/* to write a code */}
-      <div className='flex-1 flex flex-row bg-[#2f2f35] p-1'>
-        {/* <textarea aria-multiselectable aria-mul className='w-full h-full bg-transparent outline-none text-white overflow-auto' aria-multiline name='space' style={{ fontSize: font.size }} wrap='off' /> */}
-        {/* number line block */}
-        {/* <div className='w-1/12 bg-gray-500'>
-          {
-            content.split('\n').map((_, i) => (
-              <p>{i + 1}</p>
-            ))
-          }
+      {isEditor ? <>
 
-        </div> */}
-        <textarea className='w-full h-full bg-transparent outline-none border-none text-white' wrap='off' style={{
-          fontSize: `${font.size}px`,
-          resize: 'none'
-        }}
-          onChange={(e) => setContent(e.target.value)}
-          value={content}
-        />
+        <div className='flex-1 flex flex-row bg-[#2f2f35] p-1'>
+          <textarea className='w-full h-full bg-transparent outline-none border-none text-white' wrap='off' style={{
+            fontSize: `${font.size}px`,
+            resize: 'none'
+          }}
+            onChange={(e) => setContent(e.target.value)}
+            value={content}
+          />
 
-      </div>
-      <div className='w-full bg-[#414141]' style={{ height: '0.5px' }} />
-      <div className='flex flex-row justify-end pr-2 pl-2'>
-        <p className='text-[#999999]' style={{ fontSize: '7px' }}>Lines: </p>
-        {/* TODO: code lines */}
-        <p className='text-[#999999]' style={{ fontSize: '7px' }}>{lineNumbers} </p>
+        </div>
+        <div className='w-full bg-[#414141]' style={{ height: '0.5px' }} />
+        <div className='flex flex-row justify-end pr-2 pl-2'>
+          <p className='text-[#999999]' style={{ fontSize: '7px' }}>Lines: </p>
+          {/* TODO: code lines */}
+          <p className='text-[#999999]' style={{ fontSize: '7px' }}>{lineNumbers} </p>
 
-      </div>
+        </div>
+
+      </> :
+
+
+        <Settings />}
 
     </div >
   );
 }
+
